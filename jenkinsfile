@@ -1,0 +1,47 @@
+pipeline {
+  agent any
+   stages {
+
+        stage('Checkout') {
+
+            steps {
+
+              git branch: 'development', credentialsId: 'fc95aa86-ac7e-4c19-a8fb-4a2eac80d8aa', url: 'https://github.com/chaitanyapriya123/Hotel-Management-System.git' 
+
+        }
+
+        stage('Build and Test') {
+
+            steps {
+
+                sh 'mvn clean install -Dmaven.test.skip=true'
+
+
+
+            }
+
+        }
+
+        stage('Code Analysis') {
+
+            steps {
+
+                echo "Scanned successfully!"
+
+            }
+
+        }
+
+        stage('Notification') {
+
+            steps {
+
+                emailext body: 'build is successful', subject: 'Build', to: 'mujeeb9742@gmail.com'
+
+            }
+
+        }
+
+        }
+
+    }

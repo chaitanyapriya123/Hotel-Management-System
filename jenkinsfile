@@ -6,8 +6,7 @@ pipeline {
 
             steps {
 
-              git branch: 'development', credentialsId: 'fc95aa86-ac7e-4c19-a8fb-4a2eac80d8aa', url: 'https://github.com/chaitanyapriya123/Hotel-Management-System.git' 
-
+             git branch: 'development', credentialsId: '99e92ab7-b976-46f5-9f93-49703e800762', url: 'https://github.com/chaitanyapriya123/Hotel-Management-System.git'
         }
 
         stage('Build and Test') {
@@ -30,14 +29,7 @@ pipeline {
 
             }
 
-        }
-
-        stage('Notification') {
-
-            steps {
-
-                emailext body: 'build is successful', subject: 'Build', to: 'mujeeb9742@gmail.com'
-
+        
             }
 
         }
@@ -45,3 +37,4 @@ pipeline {
         }
 
     }
+}

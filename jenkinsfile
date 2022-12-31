@@ -1,37 +1,21 @@
 pipeline {
   agent any
    stages {
-
-        stage('Checkout') {
-
+         stage('Checkout') {
             steps {
-
-             git branch: 'development', credentialsId: '99e92ab7-b976-46f5-9f93-49703e800762', url: 'https://github.com/chaitanyapriya123/Hotel-Management-System.git'
+                 git branch: 'development', credentialsId: '99e92ab7-b976-46f5-9f93-49703e800762', url: 'https://github.com/chaitanyapriya123/Hotel-Management-System.git'
         }
 
         stage('Build and Test') {
-
             steps {
-
                 sh 'mvn clean install -Dmaven.test.skip=true'
-
-
-
-            }
-
+                }
         }
-
         stage('Code Analysis') {
-
             steps {
-
                 echo "Scanned successfully!"
-
-            }
-
-        
+                }
         }
-        }
-   }
+    }
 }
-
+}
